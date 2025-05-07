@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
-const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt';
 // Import bcrypt for password hashing
+
 
 // Define the structure for a User document
 const userSchema = new mongoose.Schema({
