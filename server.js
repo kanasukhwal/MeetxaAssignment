@@ -14,7 +14,15 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS for frontend running at localhost:5173
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://meetxa-assignment--chi.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 
 // Connect to MongoDB using URL from environment variables
 mongoose.connect(process.env.MONGO_DB_URL, {
@@ -30,9 +38,9 @@ app.get("/", (req, res) => {
 });
 
 // Define API routes
-app.use("/api/auth", authRoutes);            // For /register and /login
-app.use("/api/activities", activityRoutes);  // For activity create and fetch
-app.use("/api", bookingRoutes);              // For /book and /my-bookings
+app.use("/api/auth", authRoutes); // For /register and /login
+app.use("/api/activities", activityRoutes); // For activity create and fetch
+app.use("/api", bookingRoutes); // For /book and /my-bookings
 
 // Start the server
 app.listen(PORT, () => {
