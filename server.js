@@ -14,15 +14,7 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS for frontend running at localhost:5173
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://meetxa-assignment--chi.vercel.app",
-    ],
-    credentials: true,
-  })
-);
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
 // Connect to MongoDB using URL from environment variables
 mongoose.connect(process.env.MONGO_DB_URL, {
