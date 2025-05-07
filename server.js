@@ -38,3 +38,8 @@ app.use("/api", bookingRoutes);              // For /book and /my-bookings
 app.listen(PORT, () => {
   console.log("Server started on port: " + PORT);
 });
+
+const port = process.env.PORT || 5000; // Default to 5000 for local, Vercel will provide PORT
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
